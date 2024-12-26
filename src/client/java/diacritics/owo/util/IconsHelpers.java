@@ -66,7 +66,7 @@ public class IconsHelpers {
                 ByteBuffer byteBuffer =
                     MemoryUtil.memAlloc(nativeImage.getWidth() * nativeImage.getHeight() * 4);
                 list2.add(byteBuffer);
-                byteBuffer.asIntBuffer().put(nativeImage.copyPixelsRgba());
+                byteBuffer.asIntBuffer().put(nativeImage.copyPixelsArgb());
                 buffer.position(j);
                 buffer.width(nativeImage.getWidth());
                 buffer.height(nativeImage.getHeight());

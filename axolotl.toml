@@ -1,7 +1,7 @@
 [artifact]
 folder = "build/libs"
 pattern = "icon-#.jar"
-game_versions = ["1.21", "1.21.1"]
+game_versions = ["1.21.4"]
 loaders = ["fabric", "quilt"]
 
 [changelog]

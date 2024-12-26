@@ -9,6 +9,8 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.SharedConstants;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.Icons;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
@@ -30,6 +32,13 @@ public class IconClient implements ClientModInitializer {
 
 					@Override
 					public void reload(ResourceManager manager) {
+						try {
+							IconsHelpers.window().setIcon(MinecraftClient.getInstance().getDefaultResourcePack(),
+									SharedConstants.getGameVersion().isStable() ? Icons.RELEASE : Icons.SNAPSHOT);
+						} catch (IOException exception) {
+							Icon.LOGGER.error("failed to reset icon", exception);
+						}
+
 						boolean found = false;
 
 						for (Entry<Identifier, Resource> entry : manager
